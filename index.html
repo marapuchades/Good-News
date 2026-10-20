@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good News · Noticias buenas del mundo, en español</title>
+<meta name="description" content="Noticias positivas internacionales verificadas, resumidas en español, y datos que demuestran que el mundo progresa.">
+<meta property="og:title" content="Good News · Noticias buenas del mundo">
+<meta property="og:description" content="Noticias positivas verificadas, en español.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- GOOGLE ADSENSE: cuando te aprueben, pega aquí el script que te da AdSense, p. ej.:
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+<style>
+:root{
+  --bg:#fbf8f3; --surface:#ffffff; --ink:#1d2321; --muted:#5f6b66; --line:#e7e1d7;
+  --accent:#e8743b; --accent-ink:#ffffff; --green:#2f8f6b; --soft:#fff1e6;
+  --c-ciencia:#3b6fd8; --c-salud:#d6456b; --c-medio-ambiente:#2f8f6b; --c-tecnologia:#7a52cc; --c-historias:#d98a12;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141816; --surface:#1c2220; --ink:#ecefed; --muted:#a3ada8; --line:#2c3431;
+    --accent:#f08a55; --accent-ink:#1a120c; --green:#5cc49b; --soft:#2a211b;
+    --c-ciencia:#7ea4ff; --c-salud:#ff7d9c; --c-medio-ambiente:#5cc49b; --c-tecnologia:#b597ff; --c-historias:#f2b250;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0}
+
+/* Header */
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Fraunces,serif;font-weight:700;font-size:1.35rem}
+.logo .sun{width:30px;height:30px}
+nav.main{display:flex;gap:22px;font-size:.95rem;color:var(--muted)}
+nav.main a{text-decoration:none}
+nav.main a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:10px 18px;font:600 .95rem Inter,sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+@media(max-width:720px){nav.main{display:none}}
+
+/* Hero */
+.hero{padding-block:56px 32px}
+.hero .kicker{color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.8rem}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);max-width:16ch;margin:10px 0 14px}
+.hero p{color:var(--muted);max-width:56ch;font-size:1.1rem;margin:0}
+.today{margin-top:18px;font-size:.9rem;color:var(--muted)}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 24px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 .9rem Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{margin-left:auto;flex:1 1 200px;max-width:280px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit}
+
+/* Cards */
+.featured{display:grid;grid-template-columns:1.3fr 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.featured .art{min-height:260px}
+.featured .body{padding:28px}
+.featured h2{font-size:clamp(1.5rem,3vw,2rem);margin:10px 0}
+@media(max-width:760px){.featured{grid-template-columns:1fr}.featured .art{min-height:160px}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s}
+.card:hover{transform:translateY(-2px)}
+.card .art{height:120px}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.2rem;margin:8px 0}
+.summary{color:var(--muted);margin:0 0 10px}
+.why{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:.92rem;margin:0 0 12px}
+.why b{color:var(--accent)}
+.meta{margin-top:auto;display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted)}
+.meta a{color:var(--accent);font-weight:600;text-decoration:none}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--cat)}
+.art{background:radial-gradient(circle at 25% 30%,color-mix(in srgb,var(--cat) 55%,transparent),transparent 60%),radial-gradient(circle at 80% 80%,color-mix(in srgb,var(--accent) 40%,transparent),transparent 55%),color-mix(in srgb,var(--cat) 14%,var(--surface))}
+.empty{color:var(--muted);padding:40px 0;text-align:center}
+
+/* Ads */
+.ad{border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:.8rem;text-align:center;padding:26px 10px;margin:32px 0}
+
+/* Data section */
+section.block{padding-block:56px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(1.6rem,3.5vw,2.3rem)}
+.section-head p{color:var(--muted);margin:6px 0 0;max-width:60ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.stat .label{font-size:.9rem;color:var(--muted)}
+.stat .big{font-family:Fraunces,serif;font-size:2.2rem;font-weight:700;margin:4px 0}
+.stat .big small{font-size:1rem;color:var(--muted);font-family:Inter,sans-serif;font-weight:500}
+.stat svg{width:100%;height:70px;display:block;margin:8px 0}
+.stat .src{font-size:.75rem;color:var(--muted)}
+.stat .src a{color:var(--muted)}
+
+/* Newsletter */
+.news-box{background:var(--ink);color:var(--bg);border-radius:24px;padding:40px 28px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+.news-box h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+.news-box p{opacity:.8;margin:8px 0 0}
+.news-box form{display:flex;gap:8px;flex-wrap:wrap}
+.news-box input{flex:1 1 200px;border:0;border-radius:999px;padding:12px 16px;font:inherit}
+@media(max-width:760px){.news-box{grid-template-columns:1fr}}
+.ok{font-size:.9rem;margin-top:8px}
+
+footer{border-top:1px solid var(--line);margin-top:56px;padding:28px 0 40px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{margin-right:16px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./">
+      <svg class="sun" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="var(--accent)"/><g stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M26 6l-3 3M9 23l-3 3"/></g></svg>
+      Good News
+    </a>
+    <nav class="main">
+      <a href="#noticias">Noticias</a>
+      <a href="#datos">Progreso en datos</a>
+      <a href="sobre.html">Sobre nosotros</a>
+    </nav>
+    <a class="btn" href="#boletin">Suscríbete</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="kicker">Noticias internacionales · en español</div>
+    <h1>Lo que va bien en el mundo, también es noticia.</h1>
+    <p>Cada día seleccionamos noticias positivas verificadas de todo el planeta, las resumimos en español y te contamos por qué importan. Siempre con enlace a la fuente original.</p>
+    <div class="today" id="today"></div>
+  </section>
+
+  <section id="noticias" class="wrap">
+    <div class="filters" role="toolbar" aria-label="Filtrar por categoría">
+      <button class="chip" data-cat="todas" aria-pressed="true">Todas</button>
+      <button class="chip" data-cat="ciencia" aria-pressed="false">Ciencia</button>
+      <button class="chip" data-cat="salud" aria-pressed="false">Salud</button>
+      <button class="chip" data-cat="medio-ambiente" aria-pressed="false">Medio ambiente</button>
+      <button class="chip" data-cat="tecnologia" aria-pressed="false">Tecnología</button>
+      <button class="chip" data-cat="historias" aria-pressed="false">Historias</button>
+      <input class="search" type="search" placeholder="Buscar noticias…" aria-label="Buscar noticias">
+    </div>
+    <div id="featured"></div>
+    <!-- Bloque de anuncio AdSense (sustituye este div por tu <ins class="adsbygoogle">) -->
+    <div class="ad">Espacio publicitario</div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="datos" class="block wrap">
+    <div class="section-head">
+      <div>
+        <h2>Progreso en datos</h2>
+        <p>Las buenas noticias más grandes ocurren despacio y casi nunca salen en los titulares. Estas son algunas.</p>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <div class="wrap"><div class="ad">Espacio publicitario</div></div>
+
+  <section id="boletin" class="block wrap">
+    <div class="news-box">
+      <div>
+        <h2>Las 5 mejores noticias de la semana</h2>
+        <p>Cada domingo en tu correo. Gratis, sin spam, te das de baja con un clic.</p>
+      </div>
+      <!-- Cambia action por la URL de tu formulario de MailerLite, Brevo o Buttondown -->
+      <form id="nl" action="#" method="post">
+        <input type="email" name="email" required placeholder="tu@email.com" aria-label="Tu email">
+        <button class="btn" type="submit">Quiero recibirlo</button>
+        <div class="ok" id="nl-ok" hidden>¡Gracias! Revisa tu correo para confirmar.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y"></span> Good News · Noticias positivas verificadas</div>
+    <div><a href="sobre.html">Sobre nosotros</a><a href="contacto.html">Contacto</a><a href="privacidad.html">Privacidad y cookies</a></div>
+  </div>
+</footer>
+
+<script>
+const CATS={ciencia:"Ciencia",salud:"Salud","medio-ambiente":"Medio ambiente",tecnologia:"Tecnología",historias:"Historias"};
+
+// Copia de respaldo por si news.json no se puede cargar (p. ej. al abrir el archivo en local)
+const FALLBACK={"items":[
+ {"id":"ejemplo-1","title":"EJEMPLO · Titular de una noticia de ciencia","summary":"Resumen de 2-3 frases escrito con tus palabras: qué ha pasado, dónde y quién lo ha conseguido.","why":"El contexto que aporta valor propio y que AdSense valora.","category":"ciencia","country":"Internacional","source":"Nombre del medio original","source_url":"https://example.com","date":"2026-10-20","featured":true},
+ {"id":"ejemplo-2","title":"EJEMPLO · Noticia de medio ambiente","summary":"Aquí n8n escribirá el borrador y tú lo revisarás antes de publicarlo.","why":"Explica el impacto real con un dato concreto.","category":"medio-ambiente","country":"Internacional","source":"Fuente","source_url":"https://example.com","date":"2026-10-19"},
+ {"id":"ejemplo-3","title":"EJEMPLO · Avance en salud","summary":"Cada noticia enlaza siempre a la fuente original.","why":"Contexto: cuántas personas se benefician.","category":"salud","country":"Internacional","source":"Fuente","source_url":"https://example.com","date":"2026-10-19"},
+ {"id":"ejemplo-4","title":"EJEMPLO · Innovación tecnológica útil","summary":"Resumen breve y verificable.","why":"Qué cambia para la gente normal.","category":"tecnologia","country":"Internacional","source":"Fuente","source_url":"https://example.com","date":"2026-10-18"},
+ {"id":"ejemplo-5","title":"EJEMPLO · Historia humana","summary":"Una persona o comunidad que ha hecho algo admirable.","why":"Por qué inspira.","category":"historias","country":"Internacional","source":"Fuente","source_url":"https://example.com","date":"2026-10-18"}
+]};
+
+// Datos reales de progreso (fuentes citadas en cada tarjeta)
+const STATS=[
+ {label:"Población en pobreza extrema",from:[1990,38],to:[2019,9],unit:"%",down:true,series:[38,35,30,28,25,21,16,12,10,9],src:"Banco Mundial (umbral 2,15 $/día)",url:"https://ourworldindata.org/poverty"},
+ {label:"Mortalidad infantil (menores de 5 años)",from:[1990,9.3],to:[2022,3.7],unit:"%",down:true,series:[9.3,8.7,7.9,7.0,6.0,5.1,4.4,4.0,3.7],src:"ONU · UN IGME",url:"https://childmortality.org"},
+ {label:"Esperanza de vida mundial",from:[1950,46],to:[2019,73],unit:" años",down:false,series:[46,52,57,61,63,65,67,70,73],src:"ONU · World Population Prospects",url:"https://ourworldindata.org/life-expectancy"},
+ {label:"Electricidad de fuentes renovables",from:[2000,18],to:[2023,30],unit:"%",down:false,series:[18,18,18,19,20,21,24,27,29,30],src:"Ember · Global Electricity Review",url:"https://ember-energy.org"}
+];
+
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDate=d=>new Date(d+"T12:00:00").toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"});
+let ALL=[],cat="todas",q="";
+
+function card(n,big){
+  const c=`--cat:var(--c-${n.category})`;
+  return `<article class="${big?"featured":"card"}" style="${c}">
+    <div class="art" role="img" aria-label="${esc(CATS[n.category]||"")}"></div>
+    <div class="body">
+      <span class="tag">${esc(CATS[n.category]||n.category)} · ${esc(n.country||"")}</span>
+      ${big?`<h2>${esc(n.title)}</h2>`:`<h3>${esc(n.title)}</h3>`}
+      <p class="summary">${esc(n.summary)}</p>
+      ${n.why?`<p class="why"><b>Por qué importa:</b> ${esc(n.why)}</p>`:""}
+      <div class="meta"><span>${fmtDate(n.date)}</span><a href="${esc(n.source_url)}" target="_blank" rel="noopener nofollow">Fuente: ${esc(n.source)} ↗</a></div>
+    </div></article>`;
+}
+
+function render(){
+  const list=ALL.filter(n=>(cat==="todas"||n.category===cat)&&(!q||(n.title+" "+n.summary).toLowerCase().includes(q)));
+  const feat=cat==="todas"&&!q?(list.find(n=>n.featured)||list[0]):null;
+  document.getElementById("featured").innerHTML=feat?card(feat,true):"";
+  const rest=list.filter(n=>n!==feat);
+  document.getElementById("grid").innerHTML=rest.length?rest.map(n=>card(n)).join(""):(feat?"":`<p class="empty">No hay noticias con ese filtro.</p>`);
+}
+
+function spark(s,down){
+  const w=240,h=70,p=6,min=Math.min(...s),max=Math.max(...s);
+  const pts=s.map((v,i)=>[p+i*(w-2*p)/(s.length-1),h-p-(v-min)/(max-min||1)*(h-2*p)]);
+  const d=pts.map((pt,i)=>(i?"L":"M")+pt[0].toFixed(1)+" "+pt[1].toFixed(1)).join(" ");
+  const last=pts[pts.length-1];
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${d} L${last[0]} ${h} L${p} ${h} Z" fill="var(--green)" opacity=".12"/>
+    <path d="${d}" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <circle cx="${last[0]}" cy="${last[1]}" r="4" fill="var(--green)"/></svg>`;
+}
+document.getElementById("stats").innerHTML=STATS.map(s=>`<div class="stat">
+  <div class="label">${s.label}</div>
+  <div class="big">${String(s.to[1]).replace(".",",")}${s.unit.trim()==="%"?"%":""}<small>${s.unit.trim()==="%"?"":s.unit} en ${s.to[0]}</small></div>
+  <div class="label">${s.down?"↓":"↑"} desde ${String(s.from[1]).replace(".",",")}${s.unit} en ${s.from[0]}</div>
+  ${spark(s.series,s.down)}
+  <div class="src">Fuente: <a href="${s.url}" target="_blank" rel="noopener">${s.src}</a></div></div>`).join("");
+
+document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+  cat=b.dataset.cat;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));render();
+});
+document.querySelector(".search").oninput=e=>{q=e.target.value.trim().toLowerCase();render();};
+document.getElementById("nl").addEventListener("submit",e=>{
+  if(e.target.getAttribute("action")==="#"){e.preventDefault();document.getElementById("nl-ok").hidden=false;e.target.reset();}
+});
+document.getElementById("y").textContent=new Date().getFullYear();
+document.getElementById("today").textContent="Hoy es "+new Date().toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+
+fetch("news.json",{cache:"no-store"}).then(r=>r.json()).catch(()=>FALLBACK).then(d=>{
+  ALL=(d.items||[]).sort((a,b)=>b.date.localeCompare(a.date));render();
+});
+</script>
+</body>
+</html>

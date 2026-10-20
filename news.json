@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-20",
+  "items": [
+    {
+      "id": "ejemplo-1",
+      "title": "EJEMPLO · Titular de una noticia de ciencia",
+      "summary": "Resumen de 2-3 frases escrito con tus palabras: qué ha pasado, dónde y quién lo ha conseguido.",
+      "why": "El contexto que aporta valor propio y que AdSense valora.",
+      "category": "ciencia",
+      "country": "Internacional",
+      "source": "Nombre del medio original",
+      "source_url": "https://example.com",
+      "date": "2026-10-20",
+      "featured": true
+    },
+    {
+      "id": "ejemplo-2",
+      "title": "EJEMPLO · Noticia de medio ambiente",
+      "summary": "Aquí n8n escribirá el borrador y tú lo revisarás antes de publicarlo.",
+      "why": "Explica el impacto real con un dato concreto.",
+      "category": "medio-ambiente",
+      "country": "Internacional",
+      "source": "Fuente",
+      "source_url": "https://example.com",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "ejemplo-3",
+      "title": "EJEMPLO · Avance en salud",
+      "summary": "Cada noticia enlaza siempre a la fuente original.",
+      "why": "Contexto: cuántas personas se benefician.",
+      "category": "salud",
+      "country": "Internacional",
+      "source": "Fuente",
+      "source_url": "https://example.com",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "ejemplo-4",
+      "title": "EJEMPLO · Innovación tecnológica útil",
+      "summary": "Resumen breve y verificable.",
+      "why": "Qué cambia para la gente normal.",
+      "category": "tecnologia",
+      "country": "Internacional",
+      "source": "Fuente",
+      "source_url": "https://example.com",
+      "date": "2026-10-18"
+    },
+    {
+      "id": "ejemplo-5",
+      "title": "EJEMPLO · Historia humana",
+      "summary": "Una persona o comunidad que ha hecho algo admirable.",
+      "why": "Por qué inspira.",
+      "category": "historias",
+      "country": "Internacional",
+      "source": "Fuente",
+      "source_url": "https://example.com",
+      "date": "2026-10-18"
+    },
+    {
+      "id": "ejemplo-6",
+      "title": "EJEMPLO · Otra noticia de ciencia",
+      "summary": "Borra estas noticias de ejemplo antes de lanzar la web.",
+      "why": "Contexto.",
+      "category": "ciencia",
+      "country": "Internacional",
+      "source": "Fuente",
+      "source_url": "https://example.com",
+      "date": "2026-10-17"
+    }
+  ]
+}
