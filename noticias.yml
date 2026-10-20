@@ -1,0 +1,43 @@
+name: Noticias del día
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # todos los días a las 06:00 UTC (8:00 en España en verano, 7:00 en invierno)
+  workflow_dispatch:       # botón "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  noticias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r scripts/requirements.txt
+
+      - name: Buscar y resumir noticias
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/fetch_news.py
+
+      - name: Proponer noticias para revisar
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: noticias-del-dia
+          delete-branch: true
+          commit-message: "Noticias propuestas"
+          title: "📰 Noticias propuestas para hoy"
+          body: |
+            Revisa las noticias nuevas en la pestaña **Files changed**.
+
+            - Para editar alguna: abre `news.json` → icono del lápiz → corrige y guarda en esta misma rama.
+            - Para quitar alguna: borra su bloque `{ ... }` en `news.json`.
+            - Cuando esté bien, pulsa **Merge pull request** y la web se actualiza sola.
+            - Si no quieres publicar ninguna, pulsa **Close pull request**.
